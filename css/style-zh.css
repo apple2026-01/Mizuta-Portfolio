@@ -1,0 +1,744 @@
+@charset "UTF-8";
+
+/* 共通部分
+------------------------------- */
+html {
+    font-size: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Noto Sans SC", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-optical-sizing: auto;
+    line-height: 1.7;
+    color: #432;
+    padding-top: 55px;
+    /* ナビの高さと合わせる */
+}
+
+img {
+    max-width: 100%;
+}
+
+section {
+    height: 100vh;
+    /* 画面の高さ just! */
+    width: 100%;
+    background-size: cover;
+    /* 背景画像を切らずに画面いっぱい */
+    background-position: center;
+}
+
+
+/* ナビバー 
+-------------------------------*/
+.navbar {
+    position: fixed;
+    /* 画面に固定 */
+    top: 0;
+    /* 上に固定 */
+    width: 100%;
+    /* 幅いっぱいにする */
+    z-index: 999;
+    /* 前面に表示する */
+    background-color: white;
+    /* 背景 */
+    padding: 10px 20px;
+}
+
+.navbar nav ul {
+    display: flex;
+    /* 横並びにする */
+    justify-content: center;
+    gap: 20px;
+    /* 各リンクの間隔 */
+    list-style: none;
+    /* リストの点を消す */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar nav ul li a {
+    text-decoration: none;
+    /* 下線を消す */
+    font-size: 1.3rem;
+    color: #432;
+}
+
+.navbar nav ul li a:hover {
+    color: #aec6dc;
+}
+
+/* チェックボックスは見せない */
+.nav-checkbox {
+    display: none;
+}
+
+/* ハンバーガー（PCでは隠す） */
+.hamburger {
+    display: none;
+}
+
+
+/* トップ 
+-------------------------------*/
+#top {
+    /* background-color: #fcdadf; */
+    background-color: #faccd3;
+    display: flex;
+    /* Flexboxを有効にする */
+    flex-direction: column;
+    /* 縦方向に並べる */
+    justify-content: center;
+    /* 縦方向の中央寄せ */
+    align-items: center;
+    /* 横方向の中央寄せ */
+    text-align: center;
+    /* テキストを中央揃え */
+}
+
+.top-title {
+    margin-bottom: 10px;
+}
+
+/* イニシャル画像たちの枠 */
+.ini {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+    /* ← 折り返し禁止！ */
+    width: 100%;
+    gap: 4px;
+    /* 画像間の余白 */
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+/* イニシャル画像の一つ一つ */
+.ini_m {
+    flex: 1;
+    /* ← 親コンテナの幅を自動で割り振る */
+    max-width: calc((100% - 5 * 4px) / 6);
+    /* 100% から余白(gap)×5 を引いて、6で割る */
+    height: auto;
+}
+
+.down {
+    font-size: 50px;
+    /* 矢印を大きくする */
+    color: #432;
+    text-decoration: none;
+    margin-top: 30px;
+
+    animation: updown 1.5s ease-in-out infinite;
+    /* アニメーション */
+}
+
+.down:hover {
+    color: #aec6dc;
+}
+
+/* 上下に動くアニメーション */
+@keyframes updown {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* はじめに 
+-------------------------------*/
+#first {
+    /* background-color: #fcdadf; */
+    background-color: #aec6dc;
+    display: flex;
+    /* Flexboxを有効にする */
+    flex-direction: row;
+    /* 横方向に並べる */
+    justify-content: center;
+    /* 水平方向の均等配置 */
+    gap: 6%;
+    align-items: center;
+    /* 垂直方向の中央寄せ */
+    text-align: center;
+    /* テキストを中央揃え */
+}
+
+/* 写真のブロック */
+.my-photo {
+    width: 250px;
+    border-radius: 50%;
+}
+
+/* イントロダクションのブロック */
+.introduction {
+    max-width: 500px;
+    line-height: 1.8;
+}
+
+.first-title {
+    margin-bottom: 20px;
+}
+
+
+/* プロフィール 
+-------------------------------*/
+
+#profile {
+    height: auto;
+    /* ← 100vh を解除して中身に合わせる */
+    min-height: 100vh;
+    /* ← 画面以上あれば伸びる、少なければ1ページ確保 */
+    padding: 60px 20px;
+    /* 上下にゆとりを持たせる。必要に応じて調整 */
+    background-size: cover;
+    background-color: #faccd3;
+}
+
+.profile-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.timeline {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    /* 列の間の幅 */
+    padding: 20px 0;
+    max-width: 900px;
+    /* ページ左右の見切れ防止 */
+    margin: 0 auto;
+    /* 中央に配置 */
+}
+
+/* 左右2列の枠 */
+.timeline-column {
+    flex: 1;
+    border-left: 2px solid #aec6dc;
+    /* 縦線は列に対して1本だけ */
+    padding-left: 14px;
+}
+
+/* 各アイテム */
+.timeline-column>div {
+    margin-bottom: 20px;
+}
+
+.year {
+    font-weight: bold;
+}
+
+
+
+/* 制作物 
+-------------------------------*/
+/* 全体の2カラム構造 */
+
+#works {
+    height: auto;
+    /* ← 100vh を解除して中身に合わせる */
+    min-height: 100vh;
+    /* ← 画面以上あれば伸びる、少なければ1ページ確保 */
+    padding: 60px 20px;
+    /* 上下にゆとりを持たせる。必要に応じて調整 */
+    background-size: cover;
+    background-color: #aec6dc;
+}
+
+.works-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 制作物の枠*/
+.works-contents {
+    display: flex;
+    /* GridよりFlexの方が調整しやすい場合があります */
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    /* 中央寄せ */
+    margin: 80px auto;
+    /* ★全体の幅を制限して左右のバランスを固定する */
+    max-width: 1100px;
+}
+
+/* 画像側のエリア */
+.work-images {
+    flex: 1;
+    min-width: 300px;
+    /* スマホ時の最小幅 */
+    max-width: 500px;
+    /* ★ここ！これ以上横長になるのを防ぐ */
+    position: relative;
+}
+
+/* スライドを包む枠 */
+.slides {
+    position: relative;
+    width: 100%;
+    /* 高さを直接指定せず、比率で固定する */
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: #eee;
+    /* 画像がない時の背景色 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 画像リンクの設定 */
+.slide-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+/* 画像そのもの */
+.slide-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* ★重要：これをcontainにすると、画像を切らずに全体を表示。 */
+    background-color: #333;
+    /* 縦長写真の左右に余白ができる場合、黒背景にする */
+}
+
+/* github/youtubeリンク */
+.external-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.link-btn {
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid #555;
+    color: #555;
+    background: #fff;
+}
+
+/* GitHubボタンのホバー（少しシックに） */
+.link-btn.github:hover {
+    background: #333;
+    color: #fff;
+}
+
+/* YouTubeボタンのホバー（ブランドカラーの赤に） */
+.link-btn.youtube:hover {
+    background: #c4302b;
+    color: #fff;
+    border-color: #c4302b;
+}
+
+/* テキスト側のエリア */
+.work-text {
+    flex: 1;
+    min-width: 300px;
+    min-width: 300px;
+    /* ★画像側と同じ、1:1の比率が保たれます */
+    max-width: 500px;
+}
+
+/* テキスト部分 */
+.work-text h3 {
+    margin-bottom: 10px;
+}
+
+
+.work-text ul {
+    list-style: none;
+    /* 標準の黒丸を消す */
+    padding: 0;
+}
+
+.work-text ul li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* 「こだわりポイント」の中の箇条書きを少し字下げする */
+.work-text ul ul {
+    margin-top: 10px;
+    padding-left: 15px;
+    border-left: 2px solid #faccd3;
+    /* 左側に細い線を入れて区切りを出す */
+}
+
+
+
+/* --- 以下、スライダーの動作ロジック（前回のまま） --- */
+#s1-1:checked~.slides .slide-item:nth-child(1),
+#s1-2:checked~.slides .slide-item:nth-child(2),
+#s1-3:checked~.slides .slide-item:nth-child(3),
+#s1-4:checked~.slides .slide-item:nth-child(4),
+#s1-5:checked~.slides .slide-item:nth-child(5) {
+    display: block;
+}
+
+/* 選択されているボタンの色を変える */
+#s1-1:checked~.nav-buttons label:nth-child(1),
+#s1-2:checked~.nav-buttons label:nth-child(2),
+#s1-3:checked~.nav-buttons label:nth-child(3),
+#s1-4:checked~.nav-buttons label:nth-child(4),
+#s1-5:checked~.nav-buttons label:nth-child(5) {
+    background: #333;
+    /* 選択されているドットを黒くする */
+}
+
+/* 制作物Ⅱ用の表示ロジック */
+#s2-1:checked~.slides .slide-item:nth-child(1),
+#s2-2:checked~.slides .slide-item:nth-child(2),
+#s2-3:checked~.slides .slide-item:nth-child(3),
+#s2-4:checked~.slides .slide-item:nth-child(4),
+#s2-5:checked~.slides .slide-item:nth-child(5),
+#s2-6:checked~.slides .slide-item:nth-child(6),
+#s2-7:checked~.slides .slide-item:nth-child(7) {
+    display: block;
+}
+
+/* 制作物Ⅱ用のボタン（ドット）の色変えロジック */
+#s2-1:checked~.nav-buttons label:nth-child(1),
+#s2-2:checked~.nav-buttons label:nth-child(2),
+#s2-3:checked~.nav-buttons label:nth-child(3),
+#s2-4:checked~.nav-buttons label:nth-child(4),
+#s2-5:checked~.nav-buttons label:nth-child(5),
+#s2-6:checked~.nav-buttons label:nth-child(6),
+#s2-7:checked~.nav-buttons label:nth-child(7) {
+    background: #333;
+}
+
+/* 切り替えボタン（ドット）の見た目 */
+.nav-buttons {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.nav-buttons label {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 1px solid #999;
+}
+
+
+/* リンクをホバーした時に「クリックできる」と伝える */
+.slide-item:hover {
+    opacity: 0.7;
+    /* 透明度 */
+    cursor: zoom-in;
+}
+
+/* ラジオボタン自体は邪魔なので隠す */
+input[type="radio"] {
+    display: none;
+}
+
+
+
+/* スキル
+------------------------------- */
+#skills {
+    height: auto;
+    /* ← 100vh を解除して中身に合わせる */
+    min-height: 100vh;
+    /* ← 画面以上あれば伸びる、少なければ1ページ確保 */
+    padding: 60px 20px;
+    /* 上下にゆとりを持たせる。必要に応じて調整 */
+    background-size: cover;
+    background-color: #faccd3;
+}
+
+.skills-title {
+    text-align: center;
+    border-bottom: #aec6dc solid 2px;
+    margin-bottom: 20px;
+}
+
+
+
+.skills-level {
+    width: fit-content;
+    /* リストの幅を中身に合わせる */
+    margin: 0 auto;
+    text-align: left;
+    list-style: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+}
+
+.skills-contents {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+    margin: 3%;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    /* 横方向中央 */
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    height: 100%;
+    /* background-color: gray; */
+}
+
+.item h3 {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #aec6dc;
+}
+
+.item img {
+    width: 100%;
+    /* 揃える幅 */
+    /* height: 350px;      */
+    object-fit: contain;
+    /* 画像を切らずに全部入れる */
+    display: block;
+    margin-top: 4rem;
+}
+
+.item p {
+    margin-top: 4rem;
+}
+
+.license {
+    list-style: none;
+    width: 100%;
+    margin-top: 4rem;
+}
+
+
+.video-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #ff0000;
+    /* YouTube 赤 */
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 5%;
+}
+
+.video-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* thanks
+ -------------------------------*/
+#thanks {
+    height: auto;
+    /* ← 100vh を解除して中身に合わせる */
+    padding: 50px 20px;
+    /* 上下にゆとりを持たせる。必要に応じて調整 */
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: #aec6dc;
+}
+
+/* footer
+------------------------------- */
+footer {
+    height: auto;
+    /* ← 100vh を解除して中身に合わせる */
+    padding: 60px 20px;
+    /* 上下にゆとりを持たせる。必要に応じて調整 */
+    padding: 10px 0;
+    text-align: center;
+    background: #aec6dc;
+}
+
+/* レスポンシブ
+------------------------------- */
+@media (max-width: 768px) {
+
+    /* ナビバー
+    ------------------------------- */
+
+    /* ハンバーガーを表示 */
+    .hamburger {
+        display: block;
+        color: #432;
+        padding: 6px 8px;
+        border-radius: 8px;
+
+        /* タップしやすいように */
+        cursor: pointer;
+    }
+
+    /* メニューを一旦隠す（縦並びに） */
+    .navbar nav ul {
+        display: none;
+        flex-direction: column;
+        background: white;
+        padding: 20px;
+        position: absolute;
+        top: 50px;
+        left: 20px;
+        gap: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        width: 150px;
+    }
+
+    .navbar nav ul li a {
+        font-size: 1rem;
+    }
+
+    /* 初期状態では × を隠す */
+    .hamburger .icon-close {
+        display: none;
+    }
+
+    /* ←これだけで開く！ */
+    .nav-checkbox:checked~nav ul {
+        display: flex;
+    }
+
+    /* チェックが入ったときに ☰ を消して × を表示 */
+    .nav-checkbox:checked+.hamburger .icon-open {
+        display: none;
+    }
+
+    .nav-checkbox:checked+.hamburger .icon-close {
+        display: block;
+    }
+
+
+
+
+    /* トップ
+    ------------------------------- */
+    /* セクション全体 */
+    #top {
+        padding: 80px 20px;
+        /* 画面が窮屈にならないように上下左右に余白 */
+        height: auto;
+        /* スマホでは全画面固定だと使いにくいので auto に */
+    }
+
+    /* タイトル */
+    .top-title {
+        margin-bottom: 20px;
+    }
+
+
+    /* 下の矢印 */
+    .down {
+        font-size: 40px;
+        /* 少し小さく */
+        margin-top: 20px;
+    }
+
+    .down:active {
+        color: #aec6dc;
+    }
+
+    /* はじめに
+    ------------------------------- */
+    /* セクション全体 */
+    #first {
+        flex-direction: column;
+        /* 横→縦並びに変更 */
+        padding: 40px 20px;
+        gap: 30px;
+        /* 上下の余白を広く */
+        text-align: center;
+    }
+
+    /* 写真 */
+    .my-photo {
+        width: 170px;
+        /* 小さめ・可愛く */
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    /* テキスト部分 */
+    .introduction {
+        max-width: 100%;
+        /* スマホに合わせて広げる */
+        padding: 0 10px;
+    }
+
+    .first-title {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    /* プロフィール
+    ------------------------------ */
+
+    .timeline {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* 制作物
+    ------------------------------- */
+    .works-contents {
+        grid-template-columns: 1fr;
+    }
+
+    /* 画像とテキストの間の余白を確保 */
+    .work-images,
+    .work-text {
+        margin-bottom: 30px;
+    }
+
+    /* スキル
+    ------------------------------- */
+    .skills-contents {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-level {
+        font-size: 0.85rem;
+    }
+
+    .img-spe {
+        margin-left: 20px;
+    }
+
+    /* thanks
+    ------------------------------- */
+    #thanks {
+        font-size: 1rem;
+    }
+
+
+}
